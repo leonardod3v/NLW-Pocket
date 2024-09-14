@@ -1,15 +1,38 @@
-const start = () =>{
+const { select } = require('@inquirer/prompts') //Importando módulo - biblioteca inquirer para criar prompts interativos
+
+const start = async () => {
 
     while(true){
-        let opcao = "Sair"
+    
+        const opcao = await select({
+            message: "Menu >",
+            choices: [ 
+                {
+                    name: "Cadastrar meta",
+                    value: "cadastrar"
+                },
+                {
+                    name: "Listar metas",
+                    value: "listar"
+                },
+                {
+                    name: "Sair",
+                    value: "sair"
+                }
+
+        ]
+    })
+
+    
         switch(opcao) {
-            case "Cadastrar":
+            case "cadastrar":
                 console.log("Vamos cadastrar")
                 break
-            case "Listar":
+            case "listar":
                 console.log("Vamos listar")
                 break
-            case "Sair":
+            case "sair":
+                console.log("Até a próxima!")
                 return
         }
     }
